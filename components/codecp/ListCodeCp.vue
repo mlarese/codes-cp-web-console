@@ -2,6 +2,11 @@
   <v-layout>
     <v-layout>
       <v-flex>
+        <v-toolbar
+          flat
+        >
+          <v-toolbar-title>{{ $vuetify.t (' Code CP Web Console' ) }}</v-toolbar-title>
+        </v-toolbar>
         <v-data-table
           :headers="headers"
           :hide-actions="false"
