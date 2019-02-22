@@ -1,7 +1,6 @@
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
-import booking from '../fixtures/booking.json'
-import clients from '../fixtures/clients.json'
+import code from '../fixtures/code.json'
 
 const mock = new MockAdapter(axios, {delayResponse: 300})
 const success = {success: true}
@@ -9,8 +8,7 @@ const success = {success: true}
 mock
   .onGet('/profile').reply(() => [200, user])
   .onGet('/principal').reply(() => [200, user])
-  .onGet('/booking').reply(() => [200, booking])
-  .onGet('/clients').reply(() => [200, clients])
+  .onGet('/code').reply(() => [200, code])
 
   .onGet('/testerror500').reply(500)
   .onGet('/testerror403').reply(403)
