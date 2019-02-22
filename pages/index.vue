@@ -1,7 +1,7 @@
 <template>
-  <layout>
+  <div>
     <div><list-code-cp/></div>
-  </layout>
+  </div>
 </template>
 
 <script>

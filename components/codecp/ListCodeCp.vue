@@ -12,6 +12,7 @@
           :hide-actions="false"
           class="elevation-0"
         >
+
           <template
             slot="items"
             slot-scope="{item}">
@@ -28,33 +29,36 @@
       </v-flex>
     </v-layout>
     <spacer/>
-    <v-layout class="mx-5">
-      <v-card>
+    <v-layout
+      class="mx-5">
+      <v-card
+        class="elevation-0"
+        max-width="500px">
         <v-card-text>
           <v-text-field
             ref="code"
             label="Code"
+            box
           />
           <v-text-field
             ref="url"
             label="Url"
+            box
           />
           <v-text-field
             ref="key"
             label="Key"
+            box
           />
         </v-card-text>
         <v-divider/>
         <v-card-actions>
-          <v-spacer/>
           <v-btn
             color="blue darken-1"
-            flat
-            @click="close">Cancel</v-btn>
+            flat>Cancel</v-btn>
           <v-btn
             color="blue darken-1"
-            flat
-            @click="save">Save</v-btn>
+            flat>Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-layout>
