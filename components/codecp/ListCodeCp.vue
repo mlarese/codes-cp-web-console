@@ -28,7 +28,6 @@
         </v-data-table>
       </v-flex>
     </v-layout>
-    <spacer/>
     <v-layout
       class="mx-5">
       <v-card
@@ -66,8 +65,12 @@
 </template>
 
 <script>
+    const root = {root: true}
     export default {components: {
 
+        },
+        fetch ({store}) {
+            store.dispatch('code/load', {}, root)
         },
         data () {
             const headers = [
