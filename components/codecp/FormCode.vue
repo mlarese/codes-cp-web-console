@@ -2,12 +2,13 @@
   <v-layout row>
     <v-flex
       xs12
-      sm6
-      offset-sm3>
+      sm12
+      class="mx-5">
 
-      <v-card>
+      <v-card
+        class="mx-auto">
         <v-toolbar
-          color="cyan"
+          color="blue"
           flat
           class="elevation-0">
           <v-toolbar-side-icon/>
@@ -31,21 +32,30 @@
           />
         </v-card-text>
         <v-divider/>
+        <spacer/>
         <v-card-actions>
           <v-btn
-            color="blue darken-1"
-            flat>Cancel</v-btn>
+            flat
+          >
+            Clear
+          </v-btn>
+          <v-spacer/>
           <v-btn
             color="blue darken-1"
-            flat>Save</v-btn>
+            flat
+            @click="save">Save</v-btn>
         </v-card-actions>
       </v-card>
   </v-flex></v-layout>
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     export default {
-        name: "FormCode"
+        name: "FormCode",
+        methods: {
+            ...mapActions('code', ['cancel', 'save'])
+        }
     }
 </script>
 

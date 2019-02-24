@@ -1,12 +1,15 @@
 <template class="list-code">
   <v-layout>
     <v-layout>
-      <v-flex>
+      <v-flex
+        xs12
+        sm12>
         <v-toolbar
           flat
-          color="cyan"
+          color="blue"
+
         >  <v-toolbar-side-icon/>
-          <v-toolbar-title>{{ $vuetify.t(' Code CP Web Console' ) }}</v-toolbar-title>
+          <v-toolbar-title >{{ $vuetify.t(' Code CP Web Console' ) }}</v-toolbar-title>
         </v-toolbar>
         <v-data-table
           :headers="headers"
