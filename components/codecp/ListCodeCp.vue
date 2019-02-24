@@ -4,7 +4,8 @@
       <v-flex>
         <v-toolbar
           flat
-        >
+          color="cyan"
+        >  <v-toolbar-side-icon/>
           <v-toolbar-title>{{ $vuetify.t (' Code CP Web Console' ) }}</v-toolbar-title>
         </v-toolbar>
         <v-data-table
@@ -14,7 +15,7 @@
         >
 
           <template
-            slot="items"
+            slot="list"
             slot-scope="{item}">
             <td>{{ item.code }}</td>
             <td>{{ item.url }}</td>
@@ -28,50 +29,19 @@
         </v-data-table>
       </v-flex>
     </v-layout>
-    <v-layout
-      class="mx-5">
-      <v-card
-        class="elevation-0"
-        max-width="500px">
-        <v-card-text>
-          <v-text-field
-            ref="code"
-            label="Code"
-            box
-          />
-          <v-text-field
-            ref="url"
-            label="Url"
-            box
-          />
-          <v-text-field
-            ref="key"
-            label="Key"
-            box
-          />
-        </v-card-text>
-        <v-divider/>
-        <v-card-actions>
-          <v-btn
-            color="blue darken-1"
-            flat>Cancel</v-btn>
-          <v-btn
-            color="blue darken-1"
-            flat>Save</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-layout>
+
+    <form-code/>
+
   </v-layout>
 </template>
 
 <script>
+    import FormCode from './FormCode'
     const root = {root: true}
     export default {components: {
+        FormCode
+        },
 
-        },
-        fetch ({store}) {
-            store.dispatch('code/load', {}, root)
-        },
         data () {
             const headers = [
                 { text: this.$vuetify.t('Code'), value: 'code' },

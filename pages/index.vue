@@ -11,8 +11,8 @@ export default {
   components: {
         ListCodeCp
   },
-    // fetch ({store}) {
-    //    store.dispatch('code/load', {}, root)
-   // }
+    fetch ({store}) {
+       store.dispatch('code/load', {}, root)
+    }
 }
 </script>
