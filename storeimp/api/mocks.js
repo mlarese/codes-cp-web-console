@@ -7,8 +7,8 @@ mock
   .onGet('/profile').reply(() => [200, user])
   .onGet('/principal').reply(() => [200, user])
   .onGet('/code').reply(() => [200, code])
-  .onPut('/code').reply(config => [200, code])
-  .onPost('/code').reply(config => [200, code])
+  .onPut('/code').reply(() => [200, code])
+  .onPost('/code').reply(() => [200, code])
 
   .onGet('/testerror500').reply(500)
   .onGet('/testerror403').reply(403)
