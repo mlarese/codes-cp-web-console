@@ -6,16 +6,17 @@
           flat
           color="cyan"
         >  <v-toolbar-side-icon/>
-          <v-toolbar-title>{{ $vuetify.t (' Code CP Web Console' ) }}</v-toolbar-title>
+          <v-toolbar-title>{{ $vuetify.t(' Code CP Web Console' ) }}</v-toolbar-title>
         </v-toolbar>
         <v-data-table
           :headers="headers"
           :hide-actions="false"
+          :items="list"
           class="elevation-0"
         >
 
           <template
-            slot="list"
+            slot="items"
             slot-scope="{item}">
             <td>{{ item.code }}</td>
             <td>{{ item.url }}</td>
@@ -24,7 +25,7 @@
           <template
             slot="pageText"
             slot-scope="{ pageStart, pageStop, itemsLength }">
-            {{ $t('From') }} {{ pageStart }} {{ $t('To') }} {{ pageStop }}  {{ $t('Of') }} {{ itemsLength }}
+            {{ $vuetify.t('From') }} {{ pageStart }} {{ $vuetify.t('To') }} {{ pageStop }}  {{ $vuetify.t('Of') }} {{ itemsLength }}
           </template>
         </v-data-table>
       </v-flex>
@@ -53,7 +54,7 @@
             }
         },
         computed: {
-            ...mapState('code', ['$record', 'record'])
+            ...mapState('code', ['list', 'record'])
         },
     }
 </script>

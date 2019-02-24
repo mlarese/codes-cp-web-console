@@ -11,7 +11,7 @@
           flat
           class="elevation-0">
           <v-toolbar-side-icon/>
-          <v-toolbar-title>{{ $vuetify.t (' Code' ) }}</v-toolbar-title>
+          <v-toolbar-title>{{ $vuetify.t(' Code' ) }}</v-toolbar-title>
         </v-toolbar>
         <v-card-text>
           <v-text-field
