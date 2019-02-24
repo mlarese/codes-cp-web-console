@@ -7,7 +7,7 @@ export const state = () => {
         record: {},
         $record: {},
         grid: {pagination: {}},
-        mode: 'list'
+        mode: 'add',
     }
 }
 
@@ -32,15 +32,13 @@ export const mutations = {
     },
     setMode (state, payload) { state.mode = payload },
     setForm (state, payload) { state.form = payload },
-    setListMode (state) { state.mode = 'list' },
-    setViewMode (state) { state.mode = 'view' },
     setEditMode (state) { state.mode = 'edit' },
     setAddMode (state) { state.mode = 'add' }
 
 }
 export const actions = {
     update ({dispatch, commit, state}, {data, id, options = {}}) {
-        const url = `/code/id`
+        const url = `/code/${id}`
         return dispatch('api/put', {url, data, options}, root)
             .then(r => {
                 return r
@@ -81,10 +79,8 @@ export const actions = {
 }
 
 export const getters = {
-    isListMode: state => state.mode === 'list',
     isEditMode: state => state.mode === 'edit',
-    isAddMode: state => state.mode === 'add',
-    isViewMode: state => state.mode === 'view'
+    isAddMode: state => state.mode === 'add'
 }
 
 

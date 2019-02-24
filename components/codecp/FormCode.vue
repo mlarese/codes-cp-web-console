@@ -32,7 +32,7 @@
           />
         </v-card-text>
         <v-divider/>
-        <spacer/>
+        <v-spacer/>
         <v-card-actions>
           <v-btn
             flat
@@ -54,7 +54,7 @@
     export default {
         name: "FormCode",
         methods: {
-            ...mapActions('code', ['cancel', 'save'])
+            ...mapActions('code', ['cancel', 'save', 'update'])
         }
     }
 </script>

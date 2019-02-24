@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <div><list-code-cp/></div>
-  </div>
+  <div><list-code-cp/></div>
 </template>
 
 <script>
@@ -13,6 +11,7 @@ export default {
   },
     fetch ({store}) {
        store.dispatch('code/load', {}, root)
+       store.commit('code/setMode', 'add', {root: true})
     }
 }
 </script>
