@@ -1,4 +1,4 @@
-<template>
+<template class="list-code">
   <v-layout>
     <v-layout>
       <v-flex>
@@ -37,11 +37,11 @@
 
 <script>
     import FormCode from './FormCode'
+    import {mapState} from 'vuex'
     const root = {root: true}
     export default {components: {
         FormCode
         },
-
         data () {
             const headers = [
                 { text: this.$vuetify.t('Code'), value: 'code' },
@@ -51,7 +51,10 @@
             return {
                 headers
             }
-        }
+        },
+        computed: {
+            ...mapState('code', ['$record', 'record'])
+        },
     }
 </script>
 

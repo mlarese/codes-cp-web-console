@@ -1,4 +1,4 @@
-<template>
+<template class="form-code">
   <v-layout row>
     <v-flex
       xs12
