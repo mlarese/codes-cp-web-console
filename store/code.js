@@ -46,7 +46,7 @@ export const actions = {
     update ({dispatch, commit, state}, {data, id, options = {}}) {
         const url = `/code/${id}`
         return dispatch('api/put', {url, data, options}, root)
-            .then(response => commit('addRecord', {p:r.data}))
+            .then(response => commit('addRecord', {p:response.data}))
     },
     save ({dispatch, commit, state, getters}, {data, id, options = {}}) {
 
