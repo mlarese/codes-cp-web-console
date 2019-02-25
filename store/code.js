@@ -1,11 +1,14 @@
 import _cloneDeep from 'lodash/cloneDeep'
 
+import {mockApp} from '../storeimp/api/api-properties'
+
 export const state = () => {
     return {
         list: [],
         recordList: [],
         record: {},
         $record: {},
+        addRecord: {},
         grid: {pagination: {}},
         mode: 'add',
     }
@@ -30,6 +33,9 @@ export const mutations = {
         state.$record = _cloneDeep(payload)
         state.loaded = true
     },
+    addRecord (state,  p ) {
+        state.list.push({p})
+    },
     setMode (state, payload) { state.mode = payload },
     setForm (state, payload) { state.form = payload },
     setEditMode (state) { state.mode = 'edit' },
@@ -40,11 +46,10 @@ export const actions = {
     update ({dispatch, commit, state}, {data, id, options = {}}) {
         const url = `/code/${id}`
         return dispatch('api/put', {url, data, options}, root)
-            .then(r => {
-                return r
-            })
+            .then(response => commit('addRecord', {p:r.data}))
     },
     save ({dispatch, commit, state, getters}, {data, id, options = {}}) {
+
         if (getters.isAddMode) {
             return dispatch('insert', {data, options})
         } else {
