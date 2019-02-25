@@ -17,16 +17,19 @@
         <v-card-text>
           <v-text-field
             ref="code"
+            v-model="$record.code"
             label="Code"
             box
           />
           <v-text-field
             ref="url"
+            v-model="$record.url"
             label="Url"
             box
           />
           <v-text-field
             ref="key"
+            v-model="$record.key"
             label="Key"
             box
           />
@@ -50,12 +53,16 @@
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
+    import {mapActions, mapState} from 'vuex'
     export default {
         name: "FormCode",
+        computed: {
+            ...mapState('code', ['$record', 'record'])
+        },
         methods: {
             ...mapActions('code', ['cancel', 'save', 'update'])
         }
+
     }
 </script>
 
