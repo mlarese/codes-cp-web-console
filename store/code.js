@@ -46,6 +46,9 @@ export const actions = {
         const url = `/code/${id}`
         return dispatch('api/put', {url, data, options}, root)
             .then(response => commit('addRecord', {p:response.data}))
+            .then(r => {
+                return r
+            })
     },
     save ({dispatch, commit, state, getters}, {data, id, options = {}}) {
 
@@ -58,9 +61,7 @@ export const actions = {
     insert ({dispatch, commit}, {data, options = {}}) {
         const url = `/code`
         return dispatch('api/post', {url, data, options}, root)
-            .then(r => {
-                return r
-            })
+            .then(response => commit('addRecord', {p:response.data}))
     },
     load ({dispatch, commit, state}, {id = null, force = true, options = {}}) {
         if (!force && state.loaded) {
