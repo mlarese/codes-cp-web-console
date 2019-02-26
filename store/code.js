@@ -63,7 +63,7 @@ export const actions = {
             // svuoto $record
             .then(() => commit('set$Record', {}))
             // ritorno in addMode
-            .then(() => commit('set$AddMode'))
+            .then(() => commit('setAddMode'))
         }
     },
     insert ({dispatch, commit}, {data}) {
