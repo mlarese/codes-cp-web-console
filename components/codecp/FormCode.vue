@@ -52,7 +52,7 @@
   </v-flex></v-layout>
 </template>
 
-<script>
+<script type="module">
     import {mapActions, mapState} from 'vuex'
     export default {
         name: "FormCode",

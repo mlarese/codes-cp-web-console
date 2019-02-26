@@ -1,6 +1,5 @@
 import _cloneDeep from 'lodash/cloneDeep'
 
-import {mockApp} from '../storeimp/api/api-properties'
 
 export const state = () => {
     return {
