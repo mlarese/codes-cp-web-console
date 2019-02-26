@@ -33,7 +33,7 @@ export const mutations = {
         state.loaded = true
     },
     addRecord (state,  p ) {
-        state.list.push({p})
+        state.list.push(p)
     },
     setMode (state, payload) { state.mode = payload },
     setForm (state, payload) { state.form = payload },
@@ -42,26 +42,33 @@ export const mutations = {
 
 }
 export const actions = {
-    update ({dispatch, commit, state}, {data, id, options = {}}) {
+    update ({dispatch, commit, state}, {data, id}) {
         const url = `/code/${id}`
-        return dispatch('api/put', {url, data, options}, root)
-            .then(response => commit('addRecord', {p:response.data}))
-            .then(r => {
-                return r
-            })
+        return dispatch('api/put', {url, data}, root)
     },
-    save ({dispatch, commit, state, getters}, {data, id, options = {}}) {
+    save ({dispatch, commit, state, getters}) {
+        // recupero $record da state
+        let data = state.$record
 
         if (getters.isAddMode) {
-            return dispatch('insert', {data, options})
+            return dispatch('insert', {data})
+              .then(r => {
+                  commit('addRecord', data)
+                  commit('set$Record', {})
+              })
         } else {
-            return dispatch('update', {data, id, options})
+            // recupero l'id che è il codice per fare la put
+            let id = data.code
+            return dispatch('update', {data, id})
+            // svuoto $record
+            .then(() => commit('set$Record', {}))
+            // ritorno in addMode
+            .then(() => commit('set$AddMode'))
         }
     },
-    insert ({dispatch, commit}, {data, options = {}}) {
+    insert ({dispatch, commit}, {data}) {
         const url = `/code`
-        return dispatch('api/post', {url, data, options}, root)
-            .then(response => commit('addRecord', {p:response.data}))
+        return dispatch('api/post', {url, data}, root)
     },
     load ({dispatch, commit, state}, {id = null, force = true, options = {}}) {
         if (!force && state.loaded) {
