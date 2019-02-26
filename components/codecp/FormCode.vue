@@ -46,7 +46,7 @@
           <v-btn
             color="blue darken-1"
             flat
-            @click="save($record)">Save</v-btn>
+            @click="save({data:$record})">Save</v-btn>
         </v-card-actions>
       </v-card>
   </v-flex></v-layout>
