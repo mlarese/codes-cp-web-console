@@ -46,7 +46,7 @@ export const actions = {
         const url = `/code/${id}`
         return dispatch('api/put', {url, data}, root)
     },
-    selectItem({commit, item}) {
+    selectItem({commit}, item) {
         commit('set$Record', item)
         commit('editMode')
 
