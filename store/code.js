@@ -46,24 +46,30 @@ export const actions = {
         const url = `/code/${id}`
         return dispatch('api/put', {url, data}, root)
     },
+    selectItem({commit, item}) {
+        commit('set$Record', item)
+        commit('editMode')
+
+
+    },
     save ({dispatch, commit, state, getters}) {
         // recupero $record da state
         let data = state.$record
 
         if (getters.isAddMode) {
             return dispatch('insert', {data})
-              .then(r => {
-                  commit('addRecord', data)
-                  commit('set$Record', {})
-              })
+                .then(r => {
+                    commit('addRecord', data)
+                    commit('set$Record', {})
+                })
         } else {
             // recupero l'id che è il codice per fare la put
             let id = data.code
             return dispatch('update', {data, id})
             // svuoto $record
-            .then(() => commit('set$Record', {}))
-            // ritorno in addMode
-            .then(() => commit('setAddMode'))
+                .then(() => commit('set$Record', {}))
+                // ritorno in addMode
+                .then(() => commit('setAddMode'))
         }
     },
     insert ({dispatch, commit}, {data}) {
@@ -94,5 +100,4 @@ export const getters = {
     isEditMode: state => state.mode === 'edit',
     isAddMode: state => state.mode === 'add'
 }
-
 

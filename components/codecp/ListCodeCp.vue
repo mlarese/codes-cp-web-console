@@ -21,9 +21,9 @@
           <template
             slot="items"
             slot-scope="{item}">
-            <td>{{ item.code }}</td>
-            <td>{{ item.url }}</td>
-            <td>{{ item.key }}</td>
+            <td @click="selectItem(item)">{{ item.code }}</td>
+            <td @click="selectItem(item)">{{ item.url }}</td>
+            <td @click="selectItem(item)">{{ item.key }}</td>
           </template>
           <template
             slot="pageText"
@@ -41,8 +41,7 @@
 
 <script>
     import FormCode from './FormCode'
-    import {mapState} from 'vuex'
-    const root = {root: true}
+    import {mapState, mapActions} from 'vuex'
     export default {components: {
         FormCode
         },
@@ -59,6 +58,9 @@
         computed: {
             ...mapState('code', ['list', 'record'])
         },
+        methods: {
+            ...mapActions('code', ['selectItem'])
+        }
     }
 </script>
 
