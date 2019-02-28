@@ -39,26 +39,8 @@
         <v-card-actions>
           <v-spacer/>
           <v-layout
-            v-if="addMode"
-          >
-            <v-btn
-              :rules="rules.add"
-              :counter="10"
-              required
-              color="blue darken-1"
-              flat
-              @click="update">Add</v-btn>
-            <v-spacer/>
-            <v-btn
-              :rules="rules.update"
-              :counter="10"
-              required
-              color="blue darken-1"
-              flat
-              @click="add">Update</v-btn>
-          </v-layout>
-          <v-layout v-else>
-            <v-spacer/>
+            v-if="add"
+          > <v-spacer/>
             <v-btn
               :rules="rules.save"
               :counter="10"
@@ -68,6 +50,26 @@
               color="blue darken-1"
               flat
               @click="save">Save</v-btn>
+
+          </v-layout>
+          <v-layout v-else>
+
+            <v-btn
+              :rules="rules.add"
+              :counter="10"
+              required
+              color="blue darken-1"
+              flat
+              @click="add">Add</v-btn>
+            <v-spacer/>
+            <v-btn
+              :rules="rules.update"
+              :counter="10"
+              required
+              color="blue darken-1"
+              flat
+              @click="update">Update
+            </v-btn>
           </v-layout>
         </v-card-actions>
       </v-card>
@@ -76,7 +78,7 @@
 </template>
 
 <script type="module">
-    import {mapActions, mapState} from 'vuex'
+    import {mapActions, mapState, mapGetters} from 'vuex'
     export default {
         data () {
             return {
@@ -97,7 +99,8 @@
             }
         },
         computed: {
-            ...mapState('code', ['$record', 'record'])
+            ...mapState('code', ['$record', 'record']),
+            ...mapGetters('code', ['addMode'])
         },
 
         methods: {
