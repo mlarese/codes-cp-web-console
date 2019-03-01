@@ -50,8 +50,8 @@ export const actions = {
         const url = `/code/${id}`
         return dispatch('api/put', {url, data}, root)
             .then(() => {
-                const index = state.list.findIndex(o => o[idName] === id)
-                commit('setAddMode', index)
+                const index = state.list.findIndex(o => o.code === id)
+                commit('setAddMode')
             })
     },
     selectItem({commit}, item) {
