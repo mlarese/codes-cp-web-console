@@ -8,6 +8,7 @@ export const state = () => {
         record: {},
         $record: {},
         addRecord: {},
+        resetItem: {},
         grid: {pagination: {}},
         mode: 'add',
     }
@@ -35,6 +36,9 @@ export const mutations = {
     addRecord (state,  p ) {
         state.list.push(p)
     },
+    reset$Record (state) {
+        state.$record = {}
+    },
     setMode (state, payload) { state.mode = payload },
     setForm (state, payload) { state.form = payload },
     setEditMode (state) { state.mode = 'edit' },
@@ -45,12 +49,20 @@ export const actions = {
     update ({dispatch, commit, state}, {data, id}) {
         const url = `/code/${id}`
         return dispatch('api/put', {url, data}, root)
+            .then(() => {
+                const index = state.list.findIndex(o => o[idName] === id)
+                commit('setAddMode', index)
+            })
     },
     selectItem({commit}, item) {
         commit('set$Record', item)
         commit('setEditMode')
 
 
+    },
+    cancelItem({commit}) {
+      commit('reset$Record')
+      commit('setAddMode')
     },
     save ({dispatch, commit, state, getters}) {
         // recupero $record da state
