@@ -39,7 +39,7 @@
         <v-card-actions>
           <v-spacer/>
           <v-layout
-            v-if="add"
+            v-if="editMode"
           > <v-spacer/>
             <v-btn
               :rules="rules.save"
@@ -60,7 +60,8 @@
               required
               color="blue darken-1"
               flat
-              @click="add">Add</v-btn>
+              @click="edit"
+            >Cancel</v-btn>
             <v-spacer/>
             <v-btn
               :rules="rules.update"
@@ -100,11 +101,11 @@
         },
         computed: {
             ...mapState('code', ['$record', 'record']),
-            ...mapGetters('code', ['addMode'])
+            ...mapGetters('code', ['add', 'edit'])
         },
 
         methods: {
-            ...mapActions('code', ['cancel', 'save', 'update', 'add'])
+            ...mapActions('code', ['cancel', 'save', 'update'])
         },
 
     }
