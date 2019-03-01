@@ -69,7 +69,7 @@
               required
               color="blue darken-1"
               flat
-              @click="update">Update
+              @click="save">Update
             </v-btn>
           </v-layout>
         </v-card-actions>
