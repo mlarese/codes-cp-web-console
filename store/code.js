@@ -1,5 +1,5 @@
 import _cloneDeep from 'lodash/cloneDeep'
-
+import Vue from 'vue'
 
 export const state = () => {
     return {
@@ -33,6 +33,9 @@ export const mutations = {
         state.$record = _cloneDeep(payload)
         state.loaded = true
     },
+    updateItemList (state,  {item, index}) {
+        Vue.set(state.list, index, data)
+    },
     addRecord (state,  p ) {
         state.list.push(p)
     },
@@ -51,6 +54,7 @@ export const actions = {
         return dispatch('api/put', {url, data}, root)
             .then(() => {
                 const index = state.list.findIndex(o => o.code === id)
+                commit('updateItemList', {data, index})
                 commit('setAddMode')
             })
     },
