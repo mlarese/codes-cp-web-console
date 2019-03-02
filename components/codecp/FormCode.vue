@@ -17,23 +17,20 @@
         </v-toolbar>
         <v-card-text v-model="formValid">
           <v-text-field
-            ref="code"
             v-model="$record.code"
-            :disable="isEditMode"
+            :disabled="isEditMode"
             label="Code"
             box
           />
           <v-text-field
             ref="url"
             v-model="$record.url"
-            :disable="isEditMode"
             label="Url"
             box
           />
           <v-text-field
             ref="key"
             v-model="$record.key"
-            :disable="isEditMode"
             label="Key"
             box
           />
