@@ -19,18 +19,21 @@
           <v-text-field
             ref="code"
             v-model="$record.code"
+            :disable="isEditMode"
             label="Code"
             box
           />
           <v-text-field
             ref="url"
             v-model="$record.url"
+            :disable="isEditMode"
             label="Url"
             box
           />
           <v-text-field
             ref="key"
             v-model="$record.key"
+            :disable="isEditMode"
             label="Key"
             box
           />
@@ -101,7 +104,7 @@
         },
         computed: {
             ...mapState('code', ['$record', 'record']),
-            ...mapGetters('code', ['isAddMode'])
+            ...mapGetters('code', ['isAddMode', 'isEditMode'])
         },
 
         methods: {

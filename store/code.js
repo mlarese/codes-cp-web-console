@@ -33,7 +33,7 @@ export const mutations = {
         state.$record = _cloneDeep(payload)
         state.loaded = true
     },
-    updateItemList (state,  {item, index}) {
+    updateItemList (state,  {data, index}) {
         Vue.set(state.list, index, data)
     },
     addRecord (state,  p ) {
